@@ -29,19 +29,19 @@ export function ReleaseNotes({ onBack }: ReleaseNotesProps) {
               <circle cx="12" cy="12" r="2" />
             </svg>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-display text-zinc-900 dark:text-white">100 Hours</h1>
-          <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 font-display">A commitment device for deep learning.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">100 Hours</h1>
+          <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 font-medium">A commitment device for deep learning.</p>
         </header>
 
         <section className="space-y-4 text-zinc-700 dark:text-zinc-300">
-          <h2 className="text-2xl font-display text-zinc-900 dark:text-white">The Idea</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">The Idea</h2>
           <p className="leading-relaxed">
             100 hours is long enough to go beyond the basics, but short enough to feel finite. It's not about mastering a skill—it's about giving yourself enough focused time to actually learn it well, without getting stuck in the endless "tutorial hell" of finding resources.
           </p>
         </section>
 
         <section className="space-y-6">
-          <h2 className="text-2xl font-display text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-800 pb-3">The Rules</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-800 pb-3">The Rules</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {[
               { num: '01', title: 'Pick something.' },
@@ -51,7 +51,7 @@ export function ReleaseNotes({ onBack }: ReleaseNotesProps) {
               { num: '05', title: 'Ship something.' }
             ].map((rule) => (
               <div key={rule.num} className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/60 p-4 rounded-2xl flex flex-col items-center sm:items-start text-center sm:text-left space-y-1">
-                <span className="text-3xl font-display text-zinc-300 dark:text-zinc-700">{rule.num}</span>
+                <span className="text-3xl font-bold tracking-tight text-zinc-300 dark:text-zinc-700">{rule.num}</span>
                 <span className="text-sm font-semibold text-zinc-900 dark:text-white">{rule.title}</span>
               </div>
             ))}
@@ -59,7 +59,7 @@ export function ReleaseNotes({ onBack }: ReleaseNotesProps) {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-display text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-800 pb-3">Core Philosophy</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-800 pb-3">Core Philosophy</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2 p-5 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl">
               <h3 className="font-semibold text-zinc-900 dark:text-white">Max 5 Tracks</h3>
@@ -81,7 +81,7 @@ export function ReleaseNotes({ onBack }: ReleaseNotesProps) {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-display text-zinc-900 dark:text-white">Advice</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Advice</h2>
           <div className="bg-black dark:bg-white text-white dark:text-black p-6 sm:p-8 rounded-3xl">
             <p className="text-lg font-medium leading-relaxed">
               Spend your first hour planning, and your next 99 hours executing.

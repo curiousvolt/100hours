@@ -33,7 +33,7 @@ export function EditCommitmentModal({ track, onClose, onSave }: EditCommitmentMo
       
       <div className="space-y-6">
         <div>
-          <h3 className="text-xl font-display text-zinc-900 dark:text-white mb-2">{track.commitmentTitle}</h3>
+          <h3 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white mb-2">{track.commitmentTitle}</h3>
           <p className="text-sm text-zinc-500">For track: {track.topic}</p>
         </div>
 
