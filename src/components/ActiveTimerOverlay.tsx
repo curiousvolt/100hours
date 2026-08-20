@@ -99,7 +99,7 @@ export function ActiveTimerOverlay({ timer, track, onStop, onPause, onResume }: 
               <div className="flex flex-col">
                 <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium tracking-wide uppercase">{track.topic}</span>
                 <div className="flex items-center space-x-3">
-                  <span className={`text-3xl font-display tabular-nums tracking-tight ${timer.pausedAt ? 'text-zinc-400 dark:text-zinc-500' : 'text-zinc-900 dark:text-white'}`}>
+                  <span className={`text-3xl font-bold tracking-tight tabular-nums tracking-tight ${timer.pausedAt ? 'text-zinc-400 dark:text-zinc-500' : 'text-zinc-900 dark:text-white'}`}>
                     {formatTime(hours, minutes, seconds)}
                   </span>
                   {timer.pausedAt && (

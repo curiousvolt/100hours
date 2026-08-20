@@ -87,7 +87,7 @@ export default function App() {
               <Target size={20} strokeWidth={2.5} />
             </div>
             <div className="hidden min-[360px]:block truncate">
-              <h1 className="text-lg sm:text-xl font-display font-semibold tracking-tight text-zinc-900 dark:text-white group-hover:text-zinc-800 transition-colors truncate">100 Hours</h1>
+              <h1 className="text-lg sm:text-xl font-bold tracking-tight font-semibold tracking-tight text-zinc-900 dark:text-white group-hover:text-zinc-800 transition-colors truncate">100 Hours</h1>
               <p className="text-[10px] sm:text-xs text-zinc-500 font-sans tracking-wide truncate">DEEP LEARNING COMMITMENT</p>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function App() {
                   {activeTracks.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-32 px-4 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl text-center">
                       <Target size={48} className="text-zinc-700 dark:text-zinc-300 mb-6" />
-                      <h2 className="text-xl font-display text-zinc-900 dark:text-white mb-2">Nothing tracked yet.</h2>
+                      <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white mb-2">Nothing tracked yet.</h2>
                       <p className="text-zinc-600 dark:text-zinc-400 mb-8 max-w-md">Pick one thing and commit to it. Not physics, but quantum mechanics. Define a real finish line.</p>
                       <button
                         onClick={() => setIsCreateOpen(true)}
@@ -220,7 +220,7 @@ export default function App() {
                       className="flex items-center space-x-3 mb-6 cursor-pointer group w-fit" 
                       onClick={() => setIsArchivedCollapsed(!isArchivedCollapsed)}
                     >
-                      <h2 className="text-2xl font-display text-zinc-900 dark:text-white flex items-center space-x-3 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+                      <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white flex items-center space-x-3 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
                         <span>Archived</span>
                         <span className="bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs px-2.5 py-1 rounded-full font-sans">{archivedTracks.length}</span>
                       </h2>
@@ -243,12 +243,12 @@ export default function App() {
                           className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/60 rounded-[20px] p-6 flex flex-col justify-between items-start cursor-pointer hover:bg-zinc-50 transition-colors"
                         >
                           <div className="mb-4">
-                            <h3 className="text-lg font-display text-zinc-900 dark:text-white mb-1">{track.topic}</h3>
+                            <h3 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white mb-1">{track.topic}</h3>
                             <h4 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1">{track.commitmentTitle}</h4>
                             <p className="text-sm text-zinc-500 line-clamp-2">{track.commitment}</p>
                           </div>
                           <div className="w-full flex justify-between items-end mt-auto">
-                            <span className="text-xl font-display text-zinc-900 dark:text-white">
+                            <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
                               {Math.floor(track.totalMinutes / 60)}<span className="text-sm font-sans text-zinc-500 font-normal ml-1">h</span>
                             </span>
                             {track.outputLink && (

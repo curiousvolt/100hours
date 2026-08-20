@@ -45,7 +45,7 @@ export function TrackDetail({
         className="flex-1 flex flex-col items-center justify-center py-20 text-center space-y-6"
       >
         <h2 className="text-sm font-semibold tracking-[0.2em] text-zinc-500 uppercase">100 Hours</h2>
-        <h1 className="text-4xl md:text-5xl font-display text-zinc-900 dark:text-white mt-2 mb-6">{track.topic}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mt-2 mb-6">{track.topic}</h1>
         
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
           <span className="font-semibold text-zinc-900 dark:text-white">100h 00m</span> invested<br/>
@@ -104,7 +104,7 @@ export function TrackDetail({
           <div className="relative">
             <ArcProgress progress={progress} size={220} strokeWidth={12} />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-5xl font-display text-zinc-900 dark:text-white tracking-tighter">
+              <span className="text-5xl font-bold tracking-tight text-zinc-900 dark:text-white tracking-tighter">
                 {hours}<span className="text-xl font-sans text-zinc-500 font-normal ml-1">h</span>
               </span>
               <span className="text-sm font-semibold tracking-wider uppercase text-zinc-500 mt-1">/ 100h</span>
@@ -173,7 +173,7 @@ export function TrackDetail({
 
         <div className="md:col-span-2 space-y-8">
           <div>
-            <h1 className="text-4xl font-display text-zinc-900 dark:text-white mb-6">{track.topic}</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white mb-6">{track.topic}</h1>
             
             {/* Animated Commitment Card */}
             <motion.div 
@@ -190,9 +190,14 @@ export function TrackDetail({
               <h3 className="text-sm font-semibold tracking-widest uppercase text-zinc-500 mb-4 flex items-center space-x-2">
                 <span>Final Output</span>
               </h3>
-              <h4 className="text-2xl text-zinc-900 dark:text-white font-display">
+              <h4 className="text-xl sm:text-2xl text-zinc-900 dark:text-white font-semibold break-words leading-snug">
                 {track.commitmentTitle}
               </h4>
+              {track.commitment && track.commitment !== track.commitmentTitle && (
+                <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed break-words whitespace-pre-wrap">
+                  {track.commitment}
+                </p>
+              )}
             </motion.div>
           </div>
 

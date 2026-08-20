@@ -38,7 +38,7 @@ export const TrackCard: FC<TrackCardProps> = ({
       </div>
 
       <div className="mb-10 pr-8">
-        <h3 className="text-3xl font-display text-zinc-900 dark:text-white leading-tight mb-4">
+        <h3 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white leading-tight mb-4">
           {track.topic}
         </h3>
         <div className="flex flex-col space-y-1.5 border-l-2 border-zinc-200 dark:border-zinc-800 pl-3">
@@ -54,7 +54,7 @@ export const TrackCard: FC<TrackCardProps> = ({
       <div className="mt-auto space-y-5">
         <div className="space-y-2">
           <div className="flex justify-between items-end">
-            <span className="text-3xl font-display text-zinc-900 dark:text-white tracking-tighter leading-none">
+            <span className="text-3xl font-bold tracking-tighter text-zinc-900 dark:text-white leading-none">
               {hours}<span className="text-base font-sans text-zinc-500 font-normal ml-1">h</span>
             </span>
             <span className="text-xs font-semibold tracking-wider uppercase text-zinc-500">
