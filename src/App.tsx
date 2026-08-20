@@ -161,130 +161,161 @@ export default function App() {
       </header>
 
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-12">
-        {currentView === 'release-notes' ? (
-          <ReleaseNotes onBack={() => setCurrentView('home')} />
-        ) : currentView === 'home' ? (
-          <div className="space-y-16">
-            <section>
-              {activeTracks.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-32 px-4 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl text-center">
-                  <Target size={48} className="text-zinc-700 dark:text-zinc-300 mb-6" />
-                  <h2 className="text-xl font-display text-zinc-900 dark:text-white mb-2">Nothing tracked yet.</h2>
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-8 max-w-md">Pick one thing and commit to it. Not physics, but quantum mechanics. Define a real finish line.</p>
-                  <button
-                    onClick={() => setIsCreateOpen(true)}
-                    className="bg-zinc-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
-                  >
-                    Start a Track
-                  </button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {activeTracks.map(track => (
-                    <TrackCard
-                      key={track.id}
-                      track={track}
-                      onClick={(id) => setCurrentView(id)}
-                      onStartTimer={(id) => {
-                        if (store.activeTimer) {
-                          alert("Another timer is currently running.");
-                          return;
-                        }
-                        store.startTimer(id);
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-            </section>
-
-            {archivedTracks.length > 0 && (
-              <section>
-                <div 
-                  className="flex items-center space-x-3 mb-6 cursor-pointer group w-fit" 
-                  onClick={() => setIsArchivedCollapsed(!isArchivedCollapsed)}
-                >
-                  <h2 className="text-2xl font-display text-zinc-900 dark:text-white flex items-center space-x-3 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
-                    <span>Archived</span>
-                    <span className="bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs px-2.5 py-1 rounded-full font-sans">{archivedTracks.length}</span>
-                  </h2>
-                  <ChevronDown size={24} className={`text-zinc-400 transition-transform duration-300 ${isArchivedCollapsed ? '-rotate-90' : ''}`} />
-                </div>
-                
-                <AnimatePresence initial={false}>
-                  {!isArchivedCollapsed && (
-                    <motion.div 
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {archivedTracks.map(track => (
-                    <div 
-                      key={track.id} 
-                      onClick={() => setCurrentView(track.id)}
-                      className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/60 rounded-[20px] p-6 flex flex-col justify-between items-start cursor-pointer hover:bg-zinc-50 transition-colors"
-                    >
-                      <div className="mb-4">
-                        <h3 className="text-lg font-display text-zinc-900 dark:text-white mb-1">{track.topic}</h3>
-                        <h4 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1">{track.commitmentTitle}</h4>
-                        <p className="text-sm text-zinc-500 line-clamp-2">{track.commitment}</p>
-                      </div>
-                      <div className="w-full flex justify-between items-end mt-auto">
-                        <span className="text-xl font-display text-zinc-900 dark:text-white">
-                          {Math.floor(track.totalMinutes / 60)}<span className="text-sm font-sans text-zinc-500 font-normal ml-1">h</span>
-                        </span>
-                        {track.outputLink && (
-                          <a href={track.outputLink} onClick={(e) => e.stopPropagation()} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-zinc-900 dark:text-white hover:text-black dark:hover:text-white transition-colors border border-black/20 dark:border-white/20 px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5">
-                            View Output
-                          </a>
-                        )}
-                      </div>
+        <AnimatePresence mode="wait">
+          {currentView === 'release-notes' ? (
+            <motion.div
+              key="release-notes"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ReleaseNotes onBack={() => setCurrentView('home')} />
+            </motion.div>
+          ) : currentView === 'home' ? (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="space-y-16">
+                <section>
+                  {activeTracks.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-32 px-4 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl text-center">
+                      <Target size={48} className="text-zinc-700 dark:text-zinc-300 mb-6" />
+                      <h2 className="text-xl font-display text-zinc-900 dark:text-white mb-2">Nothing tracked yet.</h2>
+                      <p className="text-zinc-600 dark:text-zinc-400 mb-8 max-w-md">Pick one thing and commit to it. Not physics, but quantum mechanics. Define a real finish line.</p>
+                      <button
+                        onClick={() => setIsCreateOpen(true)}
+                        className="bg-zinc-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
+                      >
+                        Start a Track
+                      </button>
                     </div>
-                  ))}
-                      </div>
-                    </motion.div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {activeTracks.map(track => (
+                        <TrackCard
+                          key={track.id}
+                          track={track}
+                          onClick={(id) => setCurrentView(id)}
+                          onStartTimer={(id) => {
+                            if (store.activeTimer) {
+                              alert("Another timer is currently running.");
+                              return;
+                            }
+                            store.startTimer(id);
+                          }}
+                        />
+                      ))}
+                    </div>
                   )}
-                </AnimatePresence>
-              </section>
-            )}
-          </div>
-        ) : (
-          activeTrackDetail ? (
-            <TrackDetail
-              track={activeTrackDetail}
-              sessions={sessions}
-              onBack={() => setCurrentView('home')}
-              onStartTimer={(id) => {
-                if (store.activeTimer) {
-                  alert("Another timer is currently running.");
-                  return;
-                }
-                store.startTimer(id);
-              }}
-              onLogManual={(id) => setLogModalTrack(getTrack(id))}
-              onEditCommitment={(id) => setEditModalTrack(getTrack(id))}
-              onDelete={(id) => {
-                const tr = getTrack(id);
-                if (tr?.status === 'active') {
-                  setAbandonModalTrack(tr);
-                } else {
-                  setDeleteModalTrack(tr);
-                }
-              }}
-              onDeliver={store.deliverOutput}
-              onArchive={() => {
-                store.archiveTrack(activeTrackDetail.id);
-                setCurrentView("home");
-              }}
-            />
+                </section>
+
+                {archivedTracks.length > 0 && (
+                  <section>
+                    <div 
+                      className="flex items-center space-x-3 mb-6 cursor-pointer group w-fit" 
+                      onClick={() => setIsArchivedCollapsed(!isArchivedCollapsed)}
+                    >
+                      <h2 className="text-2xl font-display text-zinc-900 dark:text-white flex items-center space-x-3 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+                        <span>Archived</span>
+                        <span className="bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs px-2.5 py-1 rounded-full font-sans">{archivedTracks.length}</span>
+                      </h2>
+                      <ChevronDown size={24} className={`text-zinc-400 transition-transform duration-300 ${isArchivedCollapsed ? '-rotate-90' : ''}`} />
+                    </div>
+                    
+                    <AnimatePresence initial={false}>
+                      {!isArchivedCollapsed && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {archivedTracks.map(track => (
+                        <div 
+                          key={track.id} 
+                          onClick={() => setCurrentView(track.id)}
+                          className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/60 rounded-[20px] p-6 flex flex-col justify-between items-start cursor-pointer hover:bg-zinc-50 transition-colors"
+                        >
+                          <div className="mb-4">
+                            <h3 className="text-lg font-display text-zinc-900 dark:text-white mb-1">{track.topic}</h3>
+                            <h4 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1">{track.commitmentTitle}</h4>
+                            <p className="text-sm text-zinc-500 line-clamp-2">{track.commitment}</p>
+                          </div>
+                          <div className="w-full flex justify-between items-end mt-auto">
+                            <span className="text-xl font-display text-zinc-900 dark:text-white">
+                              {Math.floor(track.totalMinutes / 60)}<span className="text-sm font-sans text-zinc-500 font-normal ml-1">h</span>
+                            </span>
+                            {track.outputLink && (
+                              <a href={track.outputLink} onClick={(e) => e.stopPropagation()} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-zinc-900 dark:text-white hover:text-black dark:hover:text-white transition-colors border border-black/20 dark:border-white/20 px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5">
+                                View Output
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </section>
+                )}
+              </div>
+            </motion.div>
+          ) : activeTrackDetail ? (
+            <motion.div
+              key={`track-${activeTrackDetail.id}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <TrackDetail
+                track={activeTrackDetail}
+                sessions={sessions}
+                onBack={() => setCurrentView('home')}
+                onStartTimer={(id) => {
+                  if (store.activeTimer) {
+                    alert("Another timer is currently running.");
+                    return;
+                  }
+                  store.startTimer(id);
+                }}
+                onLogManual={(id) => setLogModalTrack(getTrack(id))}
+                onEditCommitment={(id) => setEditModalTrack(getTrack(id))}
+                onDelete={(id) => {
+                  const tr = getTrack(id);
+                  if (tr?.status === 'active') {
+                    setAbandonModalTrack(tr);
+                  } else {
+                    setDeleteModalTrack(tr);
+                  }
+                }}
+                onDeliver={store.deliverOutput}
+                onArchive={() => {
+                  store.archiveTrack(activeTrackDetail.id);
+                  setCurrentView("home");
+                }}
+              />
+            </motion.div>
           ) : (
-            <div className="text-center py-20 text-zinc-600 dark:text-zinc-400">
-              Track not found. <button onClick={() => setCurrentView('home')} className="text-zinc-900 dark:text-white underline ml-2">Go back</button>
-            </div>
-          )
-        )}
+            <motion.div
+              key="not-found"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="text-center py-20 text-zinc-600 dark:text-zinc-400">
+                Track not found. <button onClick={() => setCurrentView('home')} className="text-zinc-900 dark:text-white underline ml-2">Go back</button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
 
       <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8 mt-auto">
