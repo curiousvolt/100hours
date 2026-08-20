@@ -1,0 +1,6 @@
+{
+  "name": "100 Hours",
+  "description": "A commitment device for deep learning, tracking 100 hours toward a specific goal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
